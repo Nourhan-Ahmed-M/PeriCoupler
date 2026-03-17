@@ -2,6 +2,12 @@
 December 2025 
 Nourhan Ahmed (namaahmed@mun.ca)
 %____________________________________%
+If you use this software in academic work, please cite:
+Ahmed, Nourhan. (2026). *PeriCoupler* (Version 1.0) [Computer software].
+https:
+%_____________________________________%
+
+PeriCoupler is an open-source, user-friendly, Python-based tool designed to automate the generation of Peridynamic bonds and seamlessly integrate them into finite element models. The script enables efficient coupling between bond-based Peridynamics and conventional finite element analysis (FEA) within the ABAQUS framework.
 
 This Python script for ABAQUS create a plug-in to the ABAQUS GUI to solve a 2D plane stress plate element using peridynamics mapping with finite element analysis introduced by Macek and Silling in{Peridynamics via finite element analysis 2007}.
 %_____________________________________%
