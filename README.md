@@ -1,4 +1,4 @@
-# Bond-Based-Peridynamics-Mapping
+# PeriCoupler
 December 2025 
 Nourhan Ahmed (namaahmed@mun.ca)
 %____________________________________%
