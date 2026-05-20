@@ -371,5 +371,29 @@ def createPDPlateFunction(pathd,width,height,thickness,nx,ny,E,F,Nu):
     session.viewports['Viewport: 1'].odbDisplay.setPrimaryVariable(
         variableLabel='PD_stress', outputPosition=INTEGRATION_POINT, 
         refinement=(INVARIANT, 'Max. In-Plane Principal'), )
+        # Modify displacement
+
+    session.mdbData.summary()
+    odb = session.odbs[P_Odb_Path]
+    session.viewports['Viewport: 1'].setValues(displayedObject=odb)
+    s1f100_U= session.odbs[P_Odb_Path].steps['Step-1'].frames[100].fieldOutputs['U']
+    tmpField = s1f100_U
+    currentOdb = session.odbs[P_Odb_Path]
+    scratchOdb = session.ScratchOdb(odb=currentOdb)
+    sessionStep = scratchOdb.Step(name='Disp Session Step', 
+            description='Step for Viewer non-persistent fields', domain=TIME, 
+            timePeriod=1.0)
+    sessionFrame = sessionStep.Frame(frameId=0, frameValue=0.0, 
+            description='Session Frame')
+    sessionField = sessionFrame.FieldOutput(name='PD_Displacement', 
+            description='s1f100_U', field=tmpField)
+
+
+    frame = session.odbs[P_Odb_Path].steps['Step-1'].frames[100]
+    tempField = session.scratchOdbs[P_Odb_Path].steps['Disp Session Step'].frames[0].fieldOutputs['PD_Displacement']
+
+    frame.FieldOutput(name='PD_Displacement', description='s1f100_U',field=tempField) 
+            
+    session.odbs[P_Odb_Path].save()
 
     print ('Done')
